@@ -19,7 +19,7 @@ func main() {
 }
 
 type Message struct {
-  Time string `json:"time"`
+	Time string `json:"time"`
 }
 
 func sse(c echo.Context) error {
@@ -35,15 +35,15 @@ func sse(c echo.Context) error {
 		case <-c.Request().Context().Done():
 			return nil
 		case s := <-ticker.C:
-      msg := Message{Time: s.Format(time.RFC3339)}
+			msg := Message{Time: s.Format(time.RFC3339)}
 
-      data, err := json.Marshal(msg)
-      if err != nil {
-        return err
-      }
-      log.Info(data)
-      if _, err := fmt.Fprintf(w, "data: %s\n\n", data); err != nil {
-	      return err
+			data, err := json.Marshal(msg)
+			if err != nil {
+				return err
+			}
+			log.Info(data)
+			if _, err := fmt.Fprintf(w, "data: %s\n\n", data); err != nil {
+				return err
 			}
 			w.Flush()
 		}
