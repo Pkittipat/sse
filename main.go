@@ -12,7 +12,7 @@ import (
 func main() {
 	e := echo.New()
 
-	e.File("/", "./index.html")
+	e.Static("/", "./")
 	e.GET("/sse", sse)
 
 	e.Logger.Fatal(e.Start(":8080"))

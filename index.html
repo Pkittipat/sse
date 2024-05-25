@@ -1,18 +1,9 @@
 <!doctype html>
 <html>
+  <body>
+    <h1>Getting server-sent updates</h1>
+    <div id="result"></div>
 
-<body>
-  <h1>Getting server-sent updates</h1>
-  <div id="result"></div>
-
-  <script>
-    // when close the window or tab the source will be closed.
-    const source = new EventSource("/sse");
-    source.onmessage = function (event) {
-      const data = JSON.parse(event.data);
-      document.getElementById("result").innerHTML += data.time + "<br>";
-    }
-  </script>
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
